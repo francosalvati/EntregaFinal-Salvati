@@ -1,22 +1,38 @@
-
 <div class="container">
   <h2 class="p-2 ml-4" mat-dialog-title>Agregar alumno</h2>
-  <form [formGroup]="formularioUser" action="" class="flex flex-column p-4" (ngSubmit)="onSubmit()" >
-    <mat-form-field appearance="fill">
+  <form [formGroup]="formularioUser" action="" class="flex flex-column p-4" (ngSubmit)="onSubmit()">
+
+    <mat-form-field appearance="fill" class="mb-2">
       <mat-label>nombre</mat-label>
       <input matInput formControlName="name">
+      <mat-error *ngIf="nombreControll.hasError('required')" class="">
+        Este campo es obligatorio
+      </mat-error>
+      <mat-error *ngIf="nombreControll.hasError('pattern')" class="invalid-feedback">
+        caracteres solo a-z
+      </mat-error>
     </mat-form-field>
+
     <mat-form-field appearance="fill">
       <mat-label>apellido</mat-label>
       <input matInput formControlName="lastname">
+      <mat-error *ngIf="apellidoControll.hasError('required')" class="">
+        Este campo es obligatorio
+      </mat-error>
+      <mat-error *ngIf="apellidoControll.hasError('pattern')" class="invalid-feedback">
+        caracteres solo a-z
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>Choose a date</mat-label>
-      <input matInput [matDatepicker]="picker" type="text" formControlName="registro">
+      <input matInput [matDatepicker]="picker" type="text" formControlName="registro" readonly>
       <mat-hint>MM/DD/YYYY</mat-hint>
       <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker ></mat-datepicker>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="dateControll.hasError('required')" class="">
+        Este campo es obligatorio
+      </mat-error>
     </mat-form-field>
 
     <button type="submit" class="mt-4" mat-flat-button>Cargar formulario</button>
