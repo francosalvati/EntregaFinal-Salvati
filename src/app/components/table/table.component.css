@@ -9,24 +9,29 @@ table th,td{
   color: white;
 }
 
+table th{
+  background: #0000006c;
+}
+
 table tr:hover{
   background: #dddddd25;
 }
 
-
+.btn{
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
 
 /* Acordeon*/
 
-table {
-  width: 100%;
-}
 
 tr.example-detail-row {
   height: 0;
 }
 
 tr.example-element-row:not(.example-expanded-row):hover {
-  background: whitesmoke;
+  background: rgb(87, 87, 87);
 }
 
 tr.example-element-row:not(.example-expanded-row):active {
@@ -45,10 +50,10 @@ tr.example-element-row:not(.example-expanded-row):active {
 .example-element-diagram {
   min-width: 80px;
   border: 2px solid black;
-  padding: 8px;
   font-weight: lighter;
-  margin: 8px 0;
   height: 104px;
+  margin: 0;
+  padding: 0;
 }
 
 .example-element-symbol {
@@ -59,18 +64,35 @@ tr.example-element-row:not(.example-expanded-row):active {
 
 .example-element-description {
   width: 100%;
-  background: #000;
+  border-top: 3px solid black;
+  background: #dddddd27;
+  padding: 10px;
+  margin: 0;
 }
 
 .example-element-description-attribution {
   opacity: 0.5;
 }
 
-.crud{
-  width: 100%;
+.lista{
+  padding: 0;
+  margin: 0;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
+  align-items: center;
   list-style: none;
+}
+
+.lista p {
+  margin: 0;
+}
+
+.lista .edit{
+  color: blue;
+}
+
+.lista .delete{
+  color: red;
 }
 
 /* fin acordeon */

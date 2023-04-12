@@ -10,6 +10,7 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
 
 
 
+
 //Material Module
 import { SharedModule } from './shared/shared.module';
 
@@ -17,6 +18,8 @@ import { SharedModule } from './shared/shared.module';
 
 //Modulos de paginas
 import { AlumnsModule } from './pages/alumns/alumns.module';
+import { DialogModule } from '@angular/cdk/dialog';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -25,6 +28,7 @@ import { AlumnsModule } from './pages/alumns/alumns.module';
     ToolbarComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     BrowserAnimationsModule,
     SharedModule,

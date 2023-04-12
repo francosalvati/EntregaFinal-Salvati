@@ -1,15 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HomeComponent } from './home.component';
+import { FontSizeDirective } from './font-size.directive';
 
 
 
 @NgModule({
   declarations: [
-    HomeComponent
+    FontSizeDirective
   ],
   imports: [
     CommonModule
+  ],
+  exports:[
+    FontSizeDirective
   ]
 })
-export class HomeModule { }
+export class DirectivesModule { }

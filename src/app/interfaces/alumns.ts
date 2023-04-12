@@ -1,7 +1,7 @@
 export interface Alumns {
-  id:string;
+  legajo:string;
   name: string;
   lastname: string;
   status: boolean;
-  age: Date;
+  registro: Date;
 }
