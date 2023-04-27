@@ -1,17 +1,23 @@
-<nav class="navbar">
+<nav class="navbar" [ngClass]="{
+      'display': nav
+    }">
   <ul>
     <li>
-      <button mat-fab color="white"><i class="fa-solid fa-bars"></i><br><small>menu</small></button>
+      <button mat-fab color="white" routerLink="/home"><i class="fa-solid fa-house"></i><br><small>home</small></button>
     </li>
     <li>
-      <button mat-fab color="white"><i class="fa-solid fa-house"></i><br><small>home</small></button>
+      <button mat-fab color="white" routerLink="/alumns"><i class="fa-solid fa-bars"></i><br><small>alumnos</small></button>
     </li>
     <li>
-      <button mat-fab color="white"><i class="fa-solid fa-magnifying-glass"></i><br><small>search</small></button>
+      <button mat-fab color="white" routerLink="algo"><i class="fa-solid fa-user"></i><br><small>profile</small></button>
     </li>
     <li>
-      <button mat-fab color="white"><i class="fa-solid fa-gear"></i><br><small>config</small></button>
+      <button mat-fab color="white" routerLink="algo"><i class="fa-solid fa-gear"></i><br><small>config</small></button>
     </li>
   </ul>
+  <button mat-fab (click)="navBar()" class="btn-display" [ngClass]="{
+    'active': nav
+  }">
+  <i class="fa-solid fa-angle-{{show}}"></i>
+  </button>
 </nav>
-

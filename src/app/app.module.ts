@@ -18,8 +18,11 @@ import { SharedModule } from './shared/shared.module';
 
 //Modulos de paginas
 import { AlumnsModule } from './pages/alumns/alumns.module';
-import { DialogModule } from '@angular/cdk/dialog';
 import { CommonModule } from '@angular/common';
+import { AppRoutingModule } from './app-routing.module';
+import { ErrorModule } from './pages/error/error.module';
+import { AlumnsDetailModule } from './pages/alumns-detail/alumns-detail.module';
+import { HomeModule } from './pages/home/home.module';
 
 @NgModule({
   declarations: [
@@ -28,11 +31,17 @@ import { CommonModule } from '@angular/common';
     ToolbarComponent
   ],
   imports: [
+    AppRoutingModule,
+    SharedModule,
     CommonModule,
     BrowserModule,
     BrowserAnimationsModule,
-    SharedModule,
-    AlumnsModule
+    //modulos de componentes
+
+    AlumnsModule,
+    HomeModule,
+    ErrorModule,
+    AlumnsDetailModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

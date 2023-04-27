@@ -1,5 +1,3 @@
-
-
 .center{
   position: relative;
   display: flex;
@@ -10,6 +8,6 @@
   margin-left: 50px;
 }
 
-app-alumns-table{
+app-courses-table{
   width: 100%;
 }

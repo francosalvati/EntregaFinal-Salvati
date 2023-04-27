@@ -1,0 +1,13 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "franco",
+      "lastname": "salvati",
+      "email": "francosalvati98@gmail.com",
+      "password": "111111",
+      "token": "12hb3k1j498ksc98sjkdof9j98ansiodfajs89123nanmsfcvoj086372t",
+      "role": "admin"
+    }
+  ]
+}

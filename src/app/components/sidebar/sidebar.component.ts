@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'app-sidebar',
@@ -6,4 +6,15 @@ import { Component, ViewChild } from '@angular/core';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent {
+  nav: boolean = false
+  show: string = 'right'
+  constructor(){
+
+  }
+
+  navBar(){
+    this.nav = !this.nav
+    this.nav? this.show = 'left': this.show = 'right'
+  }
 }
+

@@ -1,0 +1,31 @@
+.container {
+  padding-top: 100px;
+  height: 90%;
+}
+
+.alumn-card {
+  width: 70%;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.alumn-info {
+  margin-bottom: 20px;
+}
+
+.alumn-name {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+
+.list{
+  background: #777;
+  width: 70%;
+  margin: 0 auto;
+  border-radius: 10px;
+}
+

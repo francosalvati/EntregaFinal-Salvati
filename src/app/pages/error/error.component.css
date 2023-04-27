@@ -1,0 +1,14 @@
+div{
+  height: 100%;
+}
+
+h1{
+  transform: scale(0);
+  transition: 1s;
+}
+
+.change{
+  transform: scale(1);
+  font-size: 100px;
+  color: #eee;
+}

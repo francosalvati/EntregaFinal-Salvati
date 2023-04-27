@@ -18,6 +18,6 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    console.log(this.sideBarComponentRef)
+
   }
 }

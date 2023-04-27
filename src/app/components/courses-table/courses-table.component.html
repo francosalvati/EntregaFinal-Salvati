@@ -1,0 +1,42 @@
+<div class="conteiner flex justify-content-center align-items-center">
+  <button mat-mini-fab class="add_button"><i class="fa-solid fa-plus"></i></button>
+  <mat-table [dataSource]="courses" class="mat-elevation-z8">
+
+
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef appFontSize> No.Legajo </mat-header-cell>
+      <mat-cell *matCellDef="let course"> {{course.id}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef appFontSize> Nombre </mat-header-cell>
+      <mat-cell *matCellDef="let course"> {{course.name}}</mat-cell>
+    </ng-container>
+
+
+    <ng-container matColumnDef="schedules">
+      <mat-header-cell *matHeaderCellDef appFontSize> Estado </mat-header-cell>
+      <mat-cell *matCellDef="let course"> {{course.schedules}} </mat-cell>
+    </ng-container>
+
+    <!-- <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef class="text-end" appFontSize> Acciones </mat-header-cell>
+      <mat-cell *matCellDef="let alumn">
+        <ul class="list">
+          <div class="flex actions">
+            <li>
+              <button mat-flat-button class="edit"><i
+                  class="fa-solid fa-pen-to-square"></i></button>
+            </li>
+            <li>
+              <button mat-flat-button class="delete ml-4" ><i
+                  class="fa-solid fa-trash"></i></button>
+            </li>
+          </div>
+        </ul>
+      </mat-cell>
+    </ng-container> -->
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row id="row" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>

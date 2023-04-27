@@ -1,8 +1,8 @@
 import { Component, Inject } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Form, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { Alumns } from 'src/app/interfaces/alumns';
-import { AlumnosService } from '../../../services/alumnos.service';
+import { Alumns } from 'src/app/models';
+import { AlumnosService } from '../../../core/services/alumnos.service';
 
 @Component({
   selector: 'app-user-dialogo',
@@ -11,7 +11,7 @@ import { AlumnosService } from '../../../services/alumnos.service';
 })
 export class UserDialogoComponent {
 
-  formularioUser: any;
+  formularioUser: FormGroup;
 
   nombreControll: FormControl = new FormControl('', [
     Validators.required,
@@ -30,9 +30,7 @@ export class UserDialogoComponent {
   constructor(
     private matDialog: MatDialogRef<UserDialogoComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Alumns[],
-    private fb: FormBuilder,
-    private alumnosService: AlumnosService) {
-
+    private fb: FormBuilder,) {
     this.formularioUser = this.fb.group({
       legajo: `a20-${data.length + 1}`,
       name: this.nombreControll,

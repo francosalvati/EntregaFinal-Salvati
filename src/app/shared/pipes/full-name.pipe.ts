@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Alumns } from 'src/app/interfaces/alumns';
+import { Alumns } from 'src/app/models';
 
 @Pipe({
   name: 'alumns'
@@ -19,7 +19,6 @@ export class FullNamePipe implements PipeTransform {
 
       case 'status':
         retorno = `${value? 'aprobado': 'desaprobado'}`;
-        console.log(value)
         break
     }
     return retorno;

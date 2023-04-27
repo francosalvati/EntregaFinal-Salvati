@@ -1,0 +1,15 @@
+
+<div class="container flex align-items-center flex-column">
+  <div class="alumn-card">
+    <div class="alumn-info">
+      <h2 class="alumn-name">{{ alumn | alumns:'nombreCompleto'}}  </h2>
+      <p><strong>Email:</strong> email</p>
+      <p><strong>Fecha de nacimiento:</strong> a</p>
+      <p><strong>DNI:</strong> legajo </p>
+      <p><strong>Dirección:</strong> direccion </p>
+    </div>
+  </div>
+    <mat-list role="list" class="list align-self-start mt-4" >
+      <mat-list-item role="listitem" *ngFor="let curso of courses">{{curso.name}}</mat-list-item>
+    </mat-list>
+</div>
