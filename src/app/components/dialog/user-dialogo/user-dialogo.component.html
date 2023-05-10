@@ -5,10 +5,10 @@
     <mat-form-field appearance="fill" class="mb-2">
       <mat-label>nombre</mat-label>
       <input matInput formControlName="name">
-      <mat-error *ngIf="nombreControll.hasError('required')" class="">
+      <mat-error *ngIf="nombreControll.hasError('required')" >
         Este campo es obligatorio
       </mat-error>
-      <mat-error *ngIf="nombreControll.hasError('pattern')" class="invalid-feedback">
+      <mat-error *ngIf="nombreControll.hasError('pattern')" >
         caracteres solo a-z
       </mat-error>
     </mat-form-field>
@@ -16,10 +16,10 @@
     <mat-form-field appearance="fill">
       <mat-label>apellido</mat-label>
       <input matInput formControlName="lastname">
-      <mat-error *ngIf="apellidoControll.hasError('required')" class="">
+      <mat-error *ngIf="apellidoControll.hasError('required')" >
         Este campo es obligatorio
       </mat-error>
-      <mat-error *ngIf="apellidoControll.hasError('pattern')" class="invalid-feedback">
+      <mat-error *ngIf="apellidoControll.hasError('pattern')" >
         caracteres solo a-z
       </mat-error>
     </mat-form-field>
@@ -30,7 +30,7 @@
       <mat-hint>MM/DD/YYYY</mat-hint>
       <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
-      <mat-error *ngIf="dateControll.hasError('required')" class="">
+      <mat-error *ngIf="dateControll.hasError('required')">
         Este campo es obligatorio
       </mat-error>
     </mat-form-field>

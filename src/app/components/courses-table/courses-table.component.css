@@ -9,7 +9,7 @@
 }
 
 ::-webkit-scrollbar-track {
-  background-color: #262f4b;
+  background-color: var(--color-violet);
 }
 
 .conteiner {
@@ -20,11 +20,11 @@
 }
 
 #row{
-  background: #262f4b;
+  background: var(--color-yellow);
 }
 
 #row:hover{
-  background: #58658c;
+  background: var(--color-pink);
   cursor: pointer;
 }
 
@@ -34,13 +34,17 @@
 /*
 <mat-row _ngcontent-hib-c56="" role="row" class="mat-mdc-row mdc-data-table__row cdk-row row ng-tns-c56-0 ng-star-inserted"> */
 mat-cell, mat-header-cell{
-  color: #dff;
+  color: #fff;
   transition: .2s;
   font-size: 17px;
 }
 
+mat-cell{
+  color: #333;
+}
+
 .mat-mdc-table {
-  background: #090820;
+  background: var(--color-darkViolet);
   border: 1px solid white;
   width: 100%;
   max-height: 500px;

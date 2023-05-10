@@ -5,9 +5,80 @@
       "name": "franco",
       "lastname": "salvati",
       "email": "francosalvati98@gmail.com",
-      "password": "111111",
+      "password": "soyFranco",
       "token": "12hb3k1j498ksc98sjkdof9j98ansiodfajs89123nanmsfcvoj086372t",
       "role": "admin"
+    },
+    {
+      "id": 2,
+      "name": "admin",
+      "lastname": "admin",
+      "email": "admin@gmail.com",
+      "password": "12345",
+      "token": "asdaf9982hsdafgansduyiaksjasd",
+      "role": "admin"
+    },
+    {
+      "id": 2,
+      "name": "user",
+      "lastname": "user",
+      "email": "user@gmail.com",
+      "password": "12345",
+      "token": "asdaf9982hsdafgansduyiaksjasd",
+      "role": "user"
+    }
+  ],
+
+  "alumns": [
+    {
+      "id": "a20-1",
+      "name": "franco",
+      "lastname": "salvati",
+      "status": true,
+      "registro": "7 de mayo de 2023, 22:08:58 UTC-3",
+      "courses_fk": ["s1", "s2"]
+    },
+    {
+      "id": "a20-2",
+      "name": "cacaroto",
+      "lastname": "son",
+      "status": false,
+      "registro": "7 de mayo de 2023, 22:08:58 UTC-3",
+      "courses_fk": ["s2"]
+    },
+    {
+      "id": "a20-3",
+      "name": "felipe",
+      "lastname": "Magixz",
+      "status": true,
+      "registro": "7 de mayo de 2023, 22:08:58 UTC-3",
+      "courses_fk": ["s2"]
+    },
+    {
+      "id": "a20-4",
+      "name": "pedro",
+      "lastname": "luro",
+      "status": false,
+      "registro": "7 de mayo de 2023, 22:08:58 UTC-3",
+      "courses_fk": ["s3"]
+    },
+    {
+      "id": "a20-5",
+      "name": "ignacio",
+      "lastname": "nachenzen",
+      "status": true,
+      "registro": "7 de mayo de 2023, 22:08:58 UTC-3",
+      "courses_fk": ["s2", "s3"]
+    },
+    {
+      "id": "a20-6",
+      "name": "baltazar",
+      "lastname": "nigu",
+      "status": true,
+      "registro": "7 de mayo de 2023, 22:08:58 UTC-3",
+      "courses_fk": ["s1"]
     }
   ]
+
+
 }

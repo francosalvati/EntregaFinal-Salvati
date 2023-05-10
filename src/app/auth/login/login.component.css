@@ -1,0 +1,130 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+h2{
+  font-family: 'Khand', sans-serif;
+  font-size: 30px;
+  color: var(--color-darkViolet);
+  margin-bottom: 30px;
+}
+
+.layout {
+  display: grid;
+  place-content: center;
+  width: 100%;
+  height: 100vh;
+  background-image: linear-gradient(to right, var(--color-darkViolet), var(--color-violet));
+}
+
+.container {
+  width: 900px;
+  height: 500px;
+  animation: apear 1s;
+}
+
+@keyframes apear {
+  0% {
+    filter: blur(8px);
+  }
+
+  90% {
+    filter: blur(0);
+  }
+
+  95%{
+    transform: scale(1.0);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.presentation {
+  position: relative;
+  z-index: 100;
+  width: 650px;
+  height: 100%;
+  background: #fed578;
+  border-radius: 20px;
+  box-shadow: -10px 0 20px var(--color-darkViolet);
+}
+
+.presentation img {
+  width: 300px;
+}
+
+.presentation span {
+  position: relative;
+  top: 30px;
+}
+
+.form {
+  position: relative;
+  z-index: 0;
+  width: 250px;
+  height: 460px;
+  background: var(--color-pink);
+  border-radius: 0 10px 10px 0;
+}
+
+.icon {
+  display: grid;
+  place-content: center;
+  border: 2px solid #eee;
+  width: 65px;
+  height: 65px;
+  position: relative;
+  color: #fff;
+  font-size: 40px;
+  margin: auto;
+  top: -20px;
+  border-radius: 50%;
+}
+
+form input {
+  margin-top: 20px;
+  width: 95%;
+  height: 50px;
+  border-radius: 25px;
+  border: none;
+  color: var(--color-darkViolet);
+  padding: 20px;
+  font-size: 16px;
+  background: var(--color-violet);
+}
+
+form input::placeholder{
+  color: #eeeeee8c;
+}
+
+form input:focus {
+  outline: 2px solid #fff;
+}
+
+form button {
+  width: 95%;
+  border: none;
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 25px;
+  line-height: 20px;
+  font-size: 15px;
+  background: var(--color-darkViolet);
+  color: #fff;
+  cursor: pointer;
+}
+
+form button:hover {
+  background: var(--color-violet);
+  color: var(--color-darkViolet);
+}
+
+.form a {
+  text-decoration: none;
+  color: var(--color-darkViolet) ;
+}
+

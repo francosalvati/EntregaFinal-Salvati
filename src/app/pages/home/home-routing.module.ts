@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home.component';
+import { AuthGuard } from 'src/app/guards/auth.guard';
 
 
 
@@ -10,7 +11,24 @@ import { HomeComponent } from './home.component';
     RouterModule.forChild([
       {
         path:'',
-        component:HomeComponent
+        component:HomeComponent,
+        children:[
+          {
+            path:'',
+            redirectTo: 'courses',
+            pathMatch: 'full'
+          },
+          {
+            path: 'courses',
+            canActivate: [AuthGuard],
+            loadChildren: () => import('../courses/courses-routing.module').then(m => m.CoursesRoutingModule)
+          },
+          {
+            path: 'alumns',
+            canActivate: [AuthGuard],
+            loadChildren: () => import('../alumns/alumns-routing.module').then(m => m.AlumnsRoutingModule)
+          },
+        ]
       }
     ])
   ],

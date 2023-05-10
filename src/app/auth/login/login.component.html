@@ -1,0 +1,41 @@
+<div class="layout">
+
+  <div class="container flex align-items-center">
+    <div class="presentation flex align-items-center justify-content-center flex-column">
+        <h2> BIENVENIDO A LISTADURIA </h2>
+
+      <img src="https://i.pinimg.com/564x/90/9b/6b/909b6b53276598fe06ac2fc0605c0824.jpg" alt="">
+
+      <span >
+        <small>  Explora tus cursos y encuentra lo que buscas</small>
+      </span>
+    </div>
+    <div class=" form text-center flex flex-column justify-content-center">
+      <form [formGroup]="loginForm" class="">
+        <!--
+        <mat-form-field>
+            <mat-label>Nombre de usuario</mat-label>
+            <input matInput formControlName="email" />
+          <mat-error *ngIf="emailControl.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field class="form__input">
+          <mat-label>Contraseña</mat-label>
+          <input matInput type="password" formControlName="password" />
+          <mat-error *ngIf="passwordControl.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field> -->
+        <div class="icon">
+          <i class="fa-solid fa-user"></i>
+        </div>
+
+        <input type="email" formControlName="email" placeholder="user@mail.com">
+
+        <input type="password" formControlName="password" placeholder="********">
+        <button (click)="login()">Sign in</button>
+      </form>
+      <a routerLink="" class="mt-4">Desea registrarse?</a>
+    </div>
+  </div>
+
+</div>

@@ -16,7 +16,6 @@ import { HomeRoutingModule } from '../home/home-routing.module';
     AlumnsComponent,
   ],
   imports: [
-    HomeRoutingModule,
     CommonModule,
     AlumnsRoutingModule,
     SharedModule,

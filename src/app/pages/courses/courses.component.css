@@ -1,0 +1,13 @@
+.center{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: calc(100% - 50px);
+  height: 100%;
+  margin-left: 50px;
+}
+
+app-courses-table{
+  width: 100%;
+}
