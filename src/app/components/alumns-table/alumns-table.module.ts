@@ -5,14 +5,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 //components
-import { UserDialogoComponent } from '../dialog/user-dialogo/user-dialogo.component';
-import { EditDialogoComponent } from '../dialog/edit-dialogo/edit-dialogo.component';
-import { ConfirmDialogComponent } from '../dialog/confirm-dialog/confirm-dialog.component';
+import { UserDialogoComponent } from './user-dialogo/user-dialogo.component';
+import { EditDialogoComponent } from './edit-dialogo/edit-dialogo.component';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { AlumnsTableComponent } from './alumns-table.component';
 
 
 import { SharedModule } from 'src/app/shared/shared.module';
 import { RouterModule } from '@angular/router';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { AlumnsEffects } from 'src/app/pages/alumns/store/alumns.effects';
+import { alumnsFeature } from 'src/app/pages/alumns/store/alumns.reducer';
 
 
 
@@ -30,7 +34,9 @@ import { RouterModule } from '@angular/router';
     SharedModule,
     ReactiveFormsModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    StoreModule.forFeature(alumnsFeature),
+    EffectsModule.forFeature([AlumnsEffects])
   ],
 
   exports: [

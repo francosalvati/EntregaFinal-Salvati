@@ -3,19 +3,15 @@
 
   <!-- no registrado -->
 
-  <nav class="flex">
-
-    <h2 class="mt-3">Listaduria</h2>
-
-    <ul class="list-none flex justify-content-end">
-      <!-- <li>
-        <a class="text-end" routerLink="login"> Login </a>
+  <nav class="flex align-items-center mx-3">
+    <h2 class="m-0">{{ (authUser$ | async)?.name }} {{ (authUser$ | async)?.lastname }} </h2>
+    <ul class="list-none flex justify-content-end m-0 p-0">
+      <li class="mr-4">
+          <p class="m-0 admin" *ngIf="(authUser$|async)?.role == 'admin'">SuperPowers</p>
+          <p class="m-0 user" *ngIf="(authUser$|async)?.role != 'admin'">NormalPeople</p>
       </li>
       <li>
-        <a class="text-end mx-4" routerLink="login"> Sign-in </a>
-      </li> -->
-      <li>
-        <a class="text-end mx-4" (click)="logout()"> Exit </a>
+        <a class="text-end" (click)="logout()"> Exit </a>
       </li>
     </ul>
   </nav>

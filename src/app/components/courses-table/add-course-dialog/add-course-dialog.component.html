@@ -1,0 +1,23 @@
+<div class="container">
+  <h2 class="p-2 ml-4" mat-dialog-title>Agregar un Curso</h2>
+  <form [formGroup]="addForm" action="" class="flex flex-column p-4" (ngSubmit)="onSubmit()">
+
+    <mat-form-field appearance="fill" class="mb-2">
+      <mat-label>Nombre de Curso</mat-label>
+      <input matInput formControlName="course">
+      <mat-error *ngIf="courseControl.hasError('required')" >
+        Este campo es obligatorio
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Horario</mat-label>
+      <input matInput formControlName="schedules">
+      <mat-error *ngIf="schedulesControl.hasError('required')" >
+        Este campo es obligatorio
+      </mat-error>
+    </mat-form-field>
+
+    <button type="submit" class="mt-4" mat-flat-button>Cargar Curso</button>
+  </form>
+</div>

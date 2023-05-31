@@ -1,12 +1,17 @@
-import { ChangeDetectorRef, Component, Input } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { Alumns } from 'src/app/models';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { UserDialogoComponent } from '../dialog/user-dialogo/user-dialogo.component';
-import { EditDialogoComponent } from '../dialog/edit-dialogo/edit-dialogo.component';
+import { UserDialogoComponent } from './user-dialogo/user-dialogo.component';
+import { EditDialogoComponent } from './edit-dialogo/edit-dialogo.component';
 import { AlumnosService } from '../../core/services/alumnos.service';
-import { ConfirmDialogComponent } from '../dialog/confirm-dialog/confirm-dialog.component';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { AlumnsActions } from 'src/app/pages/alumns/store/alumns.actions';
+import { Observable } from 'rxjs';
+import { State } from 'src/app/pages/alumns/store/alumns.reducer';
+import { selectAlumnsState } from 'src/app/pages/alumns/store/alumns.selectors';
 
 
 @Component({
@@ -15,35 +20,32 @@ import { Router } from '@angular/router';
   styleUrls: ['./alumns-table.component.css'],
 })
 
-export class AlumnsTableComponent {
+export class AlumnsTableComponent implements OnInit {
   alumnos!: Alumns[]
   displayedColumns: string[] = ['id', 'name', 'status', 'actions'];
   clickedRows = new Set<Alumns>()
+  state$:Observable<State>
 
   constructor(
     private dialogService: MatDialog,
+    private store: Store,
     private alumnosService: AlumnosService,
     private router: Router
   ) {
-    alumnosService.getAlumnos().subscribe(a => {
-      this.alumnos = a
-    })
+    this.state$ = this.store.select(selectAlumnsState)
+  }
+  ngOnInit(): void {
+    this.store.dispatch(AlumnsActions.loadAlumns())
+    this.state$.subscribe( alumns => this.alumnos = alumns.alumns)
   }
 
-  deleteUser(id: string) {
-
+  deleteUser(alumn: Alumns) {
     const dialogRef = this.dialogService.open(ConfirmDialogComponent, {
       data: {
-        mensaje: `¿Está seguro que desea eliminar el elemento con ID ${id}?`
+        mensaje: `¿Está seguro que desea eliminar al Alumno ${alumn.name} ${alumn.lastname}?`,
+        alumn: alumn
       }
     });
-
-    // Cuando se confirma la eliminación, borra el elemento de la tabla
-    dialogRef.afterClosed().subscribe(confirmado => {
-      if (confirmado) {
-        this.alumnosService.deleteAlumnos(id)
-      }
-    });;
   }
 
 
@@ -63,12 +65,12 @@ export class AlumnsTableComponent {
     })
 
     dialogRef.afterClosed().subscribe(valor => {
-      this.alumnosService.editAlumnos(user.id ,valor.value)
+      this.alumnosService.editAlumnos(user.id, valor.value)
     })
   }
 
-  navigateToDetails(row: Alumns){
-    this.router.navigate([`alumns/${row.id}`])
+  navigateToDetails(row: Alumns) {
+    this.router.navigate([`home/alumns/${row.id}`])
   }
 
 }

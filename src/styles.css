@@ -2,10 +2,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Domine&display=swap');
 
 :root{
-  --color-darkViolet: #6a4683;
+  --color-darkviolet: #6a4683;
   --color-violet: #b09add;
   --color-pink: #ead2ff;
-  --color-yellow: #fff3d8  ;
+  --color-yellow: #fff3d8;
+  --color-darkyellow: #fed578;
   --color-green: #98FB98;
   --color-light-blue: #ADD8E6;
   --font: 'Domine', serif;
@@ -24,6 +25,10 @@ body {
   height: 100%;
   background: #9370DB;
   font-family: var(--font);
+}
+
+::-webkit-scrollbar {
+  width: 0;
 }
 
 

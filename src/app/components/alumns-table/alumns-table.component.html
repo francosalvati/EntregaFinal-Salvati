@@ -2,27 +2,26 @@
   <button mat-mini-fab class="add_button" (click)="addUser(alumnos)"><i class="fa-solid fa-plus"></i></button>
   <mat-table [dataSource]="alumnos" class="mat-elevation-z8">
 
-    <!-- Position Column -->
     <ng-container matColumnDef="id">
       <mat-header-cell *matHeaderCellDef appFontSize> No.Legajo </mat-header-cell>
-      <mat-cell *matCellDef="let alumn"> {{alumn.id}} </mat-cell>
+      <mat-cell *matCellDef="let alumn"> A-20-{{alumn.id}} </mat-cell>
     </ng-container>
 
-    <!-- Name Column -->
+
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef appFontSize> Nombre </mat-header-cell>
       <mat-cell *matCellDef="let alumn"> {{alumn | alumns: 'nombreCompleto'}}</mat-cell>
     </ng-container>
 
-    <!-- Weight Column -->
+
     <ng-container matColumnDef="status">
       <mat-header-cell *matHeaderCellDef appFontSize> Estado </mat-header-cell>
       <mat-cell *matCellDef="let alumn"> {{alumn.status | alumns: 'status'}} </mat-cell>
     </ng-container>
 
-    <!-- Symbol Column -->
+
     <ng-container matColumnDef="actions">
-      <mat-header-cell *matHeaderCellDef class="text-end" appFontSize> Acciones </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef class="text-end" appFontSize> </mat-header-cell>
       <mat-cell *matCellDef="let alumn">
         <ul class="list">
           <div class="flex actions">
@@ -31,7 +30,7 @@
                 <i class="fa-solid fa-pen-to-square"></i></button>
             </li>
             <li>
-              <button mat-flat-button class="delete ml-4" (click)="deleteUser(alumn.legajo)">
+              <button mat-flat-button class="delete ml-4" (click)="deleteUser(alumn)">
                 <i class="fa-solid fa-trash"></i></button>
             </li>
           </div>

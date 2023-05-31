@@ -63,7 +63,7 @@ mat-cell{
 }
 
 .mat-mdc-table {
-  background: var(--color-darkViolet);
+  background: var(--color-darkviolet);
   border: 1px solid white;
   width: 100%;
   max-height: 500px;
@@ -84,7 +84,7 @@ mat-cell{
 
 .actions button{
   position: relative;
-  color: var(--color-darkViolet);
+  color: var(--color-darkviolet);
   background: transparent;
   z-index: 100;
 }
@@ -94,7 +94,7 @@ mat-cell{
   transition: .3s;
 }
 .actions li:hover button{
-  background: var(--color-darkViolet);
+  background: var(--color-darkviolet);
   color: var(--color-pink);
 }
 

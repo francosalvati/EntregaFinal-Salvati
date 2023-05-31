@@ -1,10 +1,17 @@
 export interface Alumns {
-  id:string;
+  id:number;
   name: string;
   lastname: string;
   status: boolean;
   registro: Date;
-  courses_fk?: string[];
+  courses_fk?: number[];
+}
+
+export interface CreateAlumnsData{
+  name: string;
+  lastname: string;
+  status: boolean;
+  registro: Date;
 }
 
 export interface PayloadAlumns{
@@ -18,7 +25,12 @@ export interface PayloadCourse{
 }
 
 export interface Course{
-  id: string;
+  id: number;
+  name: string;
+  schedules: string;
+}
+
+export interface CreateCourseData{
   name: string;
   schedules: string;
 }

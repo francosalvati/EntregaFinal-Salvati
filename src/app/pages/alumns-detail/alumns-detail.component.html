@@ -2,14 +2,15 @@
 <div class="container flex align-items-center flex-column">
   <div class="alumn-card">
     <div class="alumn-info">
-      <h2 class="alumn-name">{{ alumn | alumns:'nombreCompleto'}}  </h2>
-      <p><strong>Email:</strong> email</p>
-      <p><strong>Fecha de nacimiento:</strong> a</p>
-      <p><strong>DNI:</strong> legajo </p>
-      <p><strong>Dirección:</strong> direccion </p>
+      <h2 class="alumn-name" *ngIf="alumn">{{ alumn | alumns:'nombreCompleto'}}  </h2>
+      <p><strong>Legajo:</strong> A-20-{{alumn?.id}} </p>
+      <p><strong>Ultima Actualizacion:</strong> {{ alumn?.registro }}</p>
     </div>
   </div>
-    <mat-list role="list" class="list align-self-start mt-4" >
+  <div class="align-self-start p-5 ml-5">
+    <h3>Cursos: </h3>
+  </div>
+  <mat-list role="list" class="list align-self-start mt-4" >
       <mat-list-item role="listitem" *ngFor="let curso of courses">{{curso.name}}</mat-list-item>
     </mat-list>
 </div>

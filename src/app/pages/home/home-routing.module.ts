@@ -15,8 +15,8 @@ import { AuthGuard } from 'src/app/guards/auth.guard';
         children:[
           {
             path:'',
-            redirectTo: 'courses',
-            pathMatch: 'full'
+            canActivate:[AuthGuard],
+            loadChildren: () => import ('../presentation/presentation-routing.module').then( m => m.PresentationRoutingModule)
           },
           {
             path: 'courses',
@@ -27,6 +27,11 @@ import { AuthGuard } from 'src/app/guards/auth.guard';
             path: 'alumns',
             canActivate: [AuthGuard],
             loadChildren: () => import('../alumns/alumns-routing.module').then(m => m.AlumnsRoutingModule)
+          },
+          {
+            path: 'alumns/:id',
+            canActivate: [AuthGuard],
+            loadChildren: () => import('../alumns-detail/alumns-detail-routing.module').then(m => m.AlumnsDetailRoutingModule)
           },
         ]
       }

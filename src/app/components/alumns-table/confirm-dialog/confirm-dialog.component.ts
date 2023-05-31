@@ -1,5 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Store } from '@ngrx/store';
+import { Alumns } from 'src/app/models';
 
 
 @Component({
@@ -10,8 +12,9 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class ConfirmDialogComponent {
 
   constructor(
+    @Inject(MAT_DIALOG_DATA) public data: { mensaje: string, alumn: Alumns },
     private dialogRef: MatDialogRef<ConfirmDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { mensaje: string }
+    private store: Store
   ){}
 
 confirmar(): void {
@@ -20,5 +23,9 @@ confirmar(): void {
 
 cancelar() {
   this.dialogRef.close();
+}
+
+delete(){
+  console.log(MAT_DIALOG_DATA)
 }
 }

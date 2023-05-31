@@ -45,7 +45,7 @@ export class AuthService {
             this.setUserAuth(auth, auth.token)
             this.router.navigate(['home'])
           } else {
-            console.log('contrasenia mala')
+            alert('Contrasenia o usuario incorrecto')
           }
         })
       })

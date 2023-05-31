@@ -31,10 +31,12 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { actionReducerMap } from './store/index';
 import { CoursesTableModule } from './components/courses-table/courses-table.module';
 import { CoursesModule } from './pages/courses/courses.module';
+import { EffectsModule } from '@ngrx/effects';
+import { PresentationModule } from './pages/presentation/presentation.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     AppRoutingModule,
@@ -52,10 +54,12 @@ import { CoursesModule } from './pages/courses/courses.module';
     AlumnsDetailModule,
     AuthModule,
     LoginModule,
+    PresentationModule,
 
     //Store
     StoreModule.forRoot(actionReducerMap, {}),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
+    EffectsModule.forRoot([])
   ],
   providers: [],
   bootstrap: [AppComponent]

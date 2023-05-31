@@ -44,7 +44,7 @@ mat-cell{
 }
 
 .mat-mdc-table {
-  background: var(--color-darkViolet);
+  background: var(--color-darkviolet);
   border: 1px solid white;
   width: 100%;
   max-height: 500px;
@@ -97,4 +97,26 @@ mat-cell{
             translateY(-50%)
             rotate(-180deg)
             scale(1.2);
+}
+
+.list {
+  position: relative;
+  list-style: none;
+  padding: 0;
+}
+
+.actions button{
+  position: relative;
+  color: var(--color-darkviolet);
+  background: transparent;
+  z-index: 100;
+}
+
+.actions li:hover {
+  transform: scale(1.1);
+  transition: .3s;
+}
+.actions li:hover button{
+  background: var(--color-darkviolet);
+  color: var(--color-pink);
 }

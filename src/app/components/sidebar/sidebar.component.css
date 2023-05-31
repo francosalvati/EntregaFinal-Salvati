@@ -6,7 +6,8 @@
   display: flex;
   justify-content: space-evenly;
   height: 100%;
-  background: #fff;
+  color: var(--color-yellow);
+  background: var(--color-darkviolet);
   transform: translateY(-50%);
   height: 60%;
   width: 90px;
@@ -38,12 +39,16 @@
   font-size: 15px;
 }
 
+.navbar ul li button:hover {
+  color: var(--color-darkyellow);
+}
+
 .btn-display {
   position: absolute;
-  background: #eee;
-  color: black;
+  background: var(--color-pink);
+  color: var(--color-darkviolet);
   left: 100px;
-  top:  50%;
+  top: 50%;
   transform: translate(-50%, -50%);
   z-index: 0;
   transition: all .3s ease;
@@ -55,8 +60,8 @@
 
 }
 
-.active{
+.active {
   transition: .4s;
   left: 0;
-  background-color: #aaa;
+  background-color: var(--color-violet);
 }

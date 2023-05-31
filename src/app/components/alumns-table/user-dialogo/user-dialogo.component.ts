@@ -3,6 +3,9 @@ import { Form, FormBuilder, FormControl, FormGroup, Validators } from '@angular/
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Alumns } from 'src/app/models';
 import { AlumnosService } from '../../../core/services/alumnos.service';
+import { Store } from '@ngrx/store';
+import { selectAlumnsState } from 'src/app/pages/alumns/store/alumns.selectors';
+import { AlumnsActions } from 'src/app/pages/alumns/store/alumns.actions';
 
 @Component({
   selector: 'app-user-dialogo',
@@ -11,7 +14,7 @@ import { AlumnosService } from '../../../core/services/alumnos.service';
 })
 export class UserDialogoComponent {
 
-  formularioUser: FormGroup;
+
 
   nombreControll: FormControl = new FormControl('', [
     Validators.required,
@@ -27,24 +30,19 @@ export class UserDialogoComponent {
     Validators.required
   ])
 
-  constructor(
-    private matDialog: MatDialogRef<UserDialogoComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Alumns[],
-    private fb: FormBuilder,) {
-    this.formularioUser = this.fb.group({
-      legajo: `a20-${data.length + 1}`,
-      name: this.nombreControll,
-      lastname: this.apellidoControll,
-      registro: this.dateControll,
-      status: true
-    })
-  }
+  formularioUser: FormGroup = new FormGroup({
+    name: this.nombreControll,
+    lastname: this.apellidoControll,
+    registro: this.dateControll
+  });
+
+  constructor( private matDialog: MatDialogRef<UserDialogoComponent>, private store : Store) { }
 
 
 
   onSubmit() {
     this.formularioUser.valid?
-    this.matDialog.close(this.formularioUser):
-    alert('se debe llenar correctamente el formulario')
+    this.store.dispatch(AlumnsActions.createAlumn({...this.formularioUser.value, status: true})):
+    this.formularioUser.markAllAsTouched()
   }
 }

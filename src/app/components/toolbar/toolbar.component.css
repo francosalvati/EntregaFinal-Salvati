@@ -3,17 +3,19 @@
 }
 
 mat-toolbar{
+  color: #fff;
   position: relative;
   z-index: 1500;
   right: 5%;
   width: 30%;
   height: 55px;
   border-radius: 0 0 20px 20px;
-  background: #ddd;
+  background: var(--color-darkviolet);
+  opacity: .9;
 }
 
 mat-toolbar:hover{
-  background: #fff;
+  opacity: 1;
   animation: toolbar .6s ;
   height: 80px;
 }
@@ -36,12 +38,20 @@ mat-toolbar:hover{
 
 a{
   font-size: 12px;
-  color: #003;
   text-decoration: none;
   cursor: pointer;
 }
 
 ul li:hover a{
-  color: #aaa;
+  color: var(--color-darkyellow);
   text-decoration: dashed;
+}
+
+
+.admin{
+  color: rgb(0, 218, 0);
+}
+
+p{
+  font-size: 15px;
 }

@@ -1,41 +1,37 @@
 <div class="conteiner flex justify-content-center align-items-center">
-  <button mat-mini-fab class="add_button"><i class="fa-solid fa-plus"></i></button>
+  <button mat-mini-fab class="add_button" (click)="onAdd()"><i class="fa-solid fa-plus"></i></button>
   <mat-table [dataSource]="courses" class="mat-elevation-z8">
 
 
     <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef appFontSize> No.Legajo </mat-header-cell>
-      <mat-cell *matCellDef="let course"> {{course.id}} </mat-cell>
+      <mat-header-cell *matHeaderCellDef appFontSize> id </mat-header-cell>
+      <mat-cell *matCellDef="let course"> S-{{course.id}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef appFontSize> Nombre </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef appFontSize> Curso </mat-header-cell>
       <mat-cell *matCellDef="let course"> {{course.name}}</mat-cell>
     </ng-container>
 
 
     <ng-container matColumnDef="schedules">
-      <mat-header-cell *matHeaderCellDef appFontSize> Estado </mat-header-cell>
-      <mat-cell *matCellDef="let course"> {{course.schedules}} </mat-cell>
+      <mat-header-cell *matHeaderCellDef appFontSize> Horarios </mat-header-cell>
+      <mat-cell *matCellDef="let course"> {{course.schedules}} Hs. </mat-cell>
     </ng-container>
 
-    <!-- <ng-container matColumnDef="actions">
-      <mat-header-cell *matHeaderCellDef class="text-end" appFontSize> Acciones </mat-header-cell>
-      <mat-cell *matCellDef="let alumn">
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef class="text-end" appFontSize> </mat-header-cell>
+      <mat-cell *matCellDef="let course">
         <ul class="list">
           <div class="flex actions">
             <li>
-              <button mat-flat-button class="edit"><i
-                  class="fa-solid fa-pen-to-square"></i></button>
-            </li>
-            <li>
-              <button mat-flat-button class="delete ml-4" ><i
-                  class="fa-solid fa-trash"></i></button>
+              <button mat-flat-button class="delete ml-4" (click)="deleteCourse(course.id)">
+                <i class="fa-solid fa-trash"></i></button>
             </li>
           </div>
         </ul>
       </mat-cell>
-    </ng-container> -->
+    </ng-container>
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row id="row" *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>

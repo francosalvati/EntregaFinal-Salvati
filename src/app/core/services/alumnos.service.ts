@@ -1,100 +1,44 @@
 import { Injectable } from '@angular/core';
 import { Alumns, PayloadAlumns } from '../../models';
-import { BehaviorSubject, Observable, Subject, filter, retry, take } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, concatMap, filter, retry, take } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AlumnosService {
 
-  alumns_MOCK: Alumns[] = [
-    {
-      id: 'a20-1',
-      name: 'franco',
-      lastname: 'salvati',
-      status: true,
-      registro: new Date(),
-      courses_fk: ['s1', 's2']
-    },
-    {
-      id: 'a20-2',
-      name: 'cacaroto',
-      lastname: 'son',
-      status: false,
-      registro: new Date(),
-      courses_fk: ['s2']
-    },
-    {
-      id: 'a20-3',
-      name: 'felipe',
-      lastname: 'Magixz',
-      status: true,
-      registro: new Date(),
-      courses_fk: ['s2']
-    },
-    {
-      id: 'a20-4',
-      name: 'pedro',
-      lastname: 'luro',
-      status: false,
-      registro: new Date(),
-      courses_fk: ['s3']
-    },
-    {
-      id: 'a20-5',
-      name: 'ignacio',
-      lastname: 'nachenzen',
-      status: true,
-      registro: new Date(),
-      courses_fk: ['s2', 's3']
-    },
-    {
-      id: 'a20-6',
-      name: 'baltazar',
-      lastname: 'nigu',
-      status: true,
-      registro: new Date(),
-      courses_fk: ['s1']
-    },
-  ];
 
-  private alumns$ = new BehaviorSubject<Alumns[]>(
-    []
-  )
-  constructor() { }
+  private apiURL = environment.apiURL
+  private alumns$ = new BehaviorSubject<Alumns[]>([])
+  constructor(private http: HttpClient) { }
 
 
   getAlumnos(): Observable<Alumns[]> {
-    this.alumns$.next(this.alumns_MOCK);
+    this.http.get<Alumns[]>(`${this.apiURL}/alumns`).subscribe(alumns => {
+      this.alumns$.next(alumns)
+    })
     return this.alumns$.asObservable()
   }
 
   addAlumnos(payload: PayloadAlumns): Observable<Alumns[]> {
-    this.alumns$.pipe(
-      take(1)
-    )
-      .subscribe({
-        next: (alumn => {
-          this.alumns$.next([...this.alumns_MOCK, {
-            id: `a20-${this.alumns_MOCK.length + 1}`,
-            status: true,
-            ...payload
-          }])
-        }),
-        complete: () => { },
-        error: () => { }
-      })
-    return this.alumns$.asObservable()
+    return this.http.post<Alumns[]>(`${this.apiURL}/alumns`, payload)
   }
 
-  editAlumnos(id: string, actualizacion: Date): Observable<Alumns[]> {
+
+  getAlumnById(id: number): Observable<Alumns> {
+    return this.http.get<Alumns>(`${this.apiURL}/alumns/${id}`)
+  }
+
+
+  editAlumnos(id: number, actualizacion: Date): Observable<Alumns[]> {
 
     this.alumns$.pipe(
       take(1)
     )
       .subscribe({
         next: (alumn => {
-
           const alumnosA = alumn.map((alumn) => {
             if (alumn.id === id) {
               return {
@@ -115,20 +59,7 @@ export class AlumnosService {
     return this.alumns$.asObservable()
   }
 
-  deleteAlumnos(id: string): Observable<Alumns[]> {
-    this.alumns$
-      .pipe(
-        take(1)
-      ).subscribe({
-        next: (alumns => {
-          const alumnsA = alumns.filter(alumn => alumn.id !== id)
-
-          this.alumns$.next(alumnsA)
-        }),
-        complete: () => { },
-        error: () => { }
-
-      })
+  deleteAlumnos(id: number): Observable<Alumns[]> {
     return this.alumns$.asObservable()
   }
 }

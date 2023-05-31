@@ -1,97 +1,37 @@
 import { Injectable } from '@angular/core';
-import { Course, PayloadCourse } from '../../models/index';
-import { BehaviorSubject, Observable, take } from 'rxjs';
+import { Course, CreateCourseData, PayloadCourse } from '../../models/index';
+import { BehaviorSubject, Observable, concatMap, take } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CourseService {
 
-  coursesMOCK: Course[] = [
-    {
-      id: 's1',
-      name: 'Angular',
-      schedules: '20:30 - 22:30'
-    },
-    {
-      id: 's3',
-      name: 'UX - UI',
-      schedules: '10:30 - 12:30'
-    },
-    {
-      id: 's2',
-      name: 'Css',
-      schedules: '17:00 - 20:00'
-    }
-  ]
-
+  private apiURL = environment.apiURL
   private courses$ = new BehaviorSubject<Course[]>([])
 
-  constructor( ) { }
+  constructor( private http: HttpClient ) { }
 
   getCourses(): Observable<Course[]> {
-    this.courses$.next(this.coursesMOCK);
-    return this.courses$.asObservable()
+    return this.http.get<Course[]>(`${this.apiURL}/courses`)
   }
 
-  addCourses(payload: PayloadCourse): Observable<Course[]> {
-    this.courses$.pipe(
-      take(1)
+  getCourse(id: number): Observable<Course>{
+    return this.http.get<Course>(`${this.apiURL}/courses/${id}`)
+  }
+
+  addCourse( data: CreateCourseData ) {
+    return this.http.post<Course>(`${this.apiURL}/courses`, data).pipe(
+      concatMap((createResponse) => this.getCourse(createResponse.id))
     )
-      .subscribe({
-        next: (alumn => {
-          this.courses$.next([...this.coursesMOCK, {
-            id: `s${this.coursesMOCK.length + 1}`,
-            ...payload
-          }])
-        }),
-        complete: () => { },
-        error: () => { }
-      })
-    return this.courses$.asObservable()
   }
 
-  editCourses(id: string, actualizacion: Date): Observable<Course[]> {
-
-    this.courses$.pipe(
-      take(1)
+  deleteCourse(id: number): Observable<unknown>{
+    return this.http.delete(
+      `${this.apiURL}/courses/${id}`
     )
-      .subscribe({
-        next: (course => {
-
-          const CoursesA = course.map((course) => {
-            if (course.id === id) {
-              return {
-                ...course,
-                ...actualizacion
-              }
-            } else {
-              return course
-            }
-          })
-
-          this.courses$.next(CoursesA);
-        }),
-        complete: () => { },
-        error: () => { }
-      })
-
-    return this.courses$.asObservable()
   }
 
-  deleteCourses(id: string): Observable<Course[]> {
-    this.courses$
-      .pipe(
-        take(1)
-      ).subscribe({
-        next: (courses => {
-          const CoursesA = courses.filter(course => course.id !== id)
-          this.courses$.next(CoursesA)
-        }),
-        complete: () => { },
-        error: () => { }
-
-      })
-    return this.courses$.asObservable()
-  }
 }

@@ -7,7 +7,7 @@ import { Alumns } from 'src/app/models';
 
 export class FullNamePipe implements PipeTransform {
 
-  transform(value: Alumns, args?: any): string {
+  transform(value: Alumns , args?: any): string {
 
 
     let retorno = '';

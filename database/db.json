@@ -2,8 +2,8 @@
   "users": [
     {
       "id": 1,
-      "name": "franco",
-      "lastname": "salvati",
+      "name": "Franco",
+      "lastname": "Salvati",
       "email": "francosalvati98@gmail.com",
       "password": "soyFranco",
       "token": "12hb3k1j498ksc98sjkdof9j98ansiodfajs89123nanmsfcvoj086372t",
@@ -11,74 +11,112 @@
     },
     {
       "id": 2,
-      "name": "admin",
+      "name": "Admin",
       "lastname": "admin",
       "email": "admin@gmail.com",
       "password": "12345",
-      "token": "asdaf9982hsdafgansduyiaksjasd",
+      "token": "asdaf9asdgr4e982hsdafgansduyiaksjasd",
       "role": "admin"
     },
     {
-      "id": 2,
-      "name": "user",
+      "id": 3,
+      "name": "User",
       "lastname": "user",
       "email": "user@gmail.com",
       "password": "12345",
-      "token": "asdaf9982hsdafgansduyiaksjasd",
+      "token": "asdaf9982hsdafgansasdgasdduyiaksjasd",
       "role": "user"
     }
   ],
-
   "alumns": [
     {
-      "id": "a20-1",
+      "id": 1,
       "name": "franco",
       "lastname": "salvati",
       "status": true,
       "registro": "7 de mayo de 2023, 22:08:58 UTC-3",
-      "courses_fk": ["s1", "s2"]
+      "courses_fk": [
+        1,
+        2
+      ]
     },
     {
-      "id": "a20-2",
+      "id": 2,
       "name": "cacaroto",
       "lastname": "son",
       "status": false,
       "registro": "7 de mayo de 2023, 22:08:58 UTC-3",
-      "courses_fk": ["s2"]
+      "courses_fk": [
+        2
+      ]
     },
     {
-      "id": "a20-3",
+      "id": 3,
       "name": "felipe",
       "lastname": "Magixz",
       "status": true,
       "registro": "7 de mayo de 2023, 22:08:58 UTC-3",
-      "courses_fk": ["s2"]
+      "courses_fk": [
+        2
+      ]
     },
     {
-      "id": "a20-4",
+      "id": 4,
       "name": "pedro",
       "lastname": "luro",
       "status": false,
       "registro": "7 de mayo de 2023, 22:08:58 UTC-3",
-      "courses_fk": ["s3"]
+      "courses_fk": [
+        3
+      ]
     },
     {
-      "id": "a20-5",
+      "id": 5,
       "name": "ignacio",
       "lastname": "nachenzen",
       "status": true,
       "registro": "7 de mayo de 2023, 22:08:58 UTC-3",
-      "courses_fk": ["s2", "s3"]
+      "courses_fk": [
+        2,
+        3
+      ]
     },
     {
-      "id": "a20-6",
+      "id": 6,
       "name": "baltazar",
       "lastname": "nigu",
       "status": true,
       "registro": "7 de mayo de 2023, 22:08:58 UTC-3",
-      "courses_fk": ["s1"]
+      "courses_fk": [
+        1
+      ]
+    }
+  ],
+  "courses": [
+    {
+      "id": 1,
+      "name": "Angular",
+      "schedules": "20:30 - 22:30"
+    },
+    {
+      "id": 2,
+      "name": "Css",
+      "schedules": "17:00 - 20:00"
+    },
+    {
+      "id": 3,
+      "name": "UX - UI",
+      "schedules": "10:30 - 12:30"
+    },
+    {
+      "id": 4,
+      "name": "UX - UI",
+      "schedules": "10:30 - 12:30"
+    },
+    {
+      "id": 5,
+      "name": "UX - UI",
+      "schedules": "10:30 - 12:30"
     }
   ]
-
-
 }
