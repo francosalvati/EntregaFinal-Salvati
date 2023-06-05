@@ -30,24 +30,23 @@
   ],
   "alumns": [
     {
-      "id": 1,
-      "name": "franco",
-      "lastname": "salvati",
       "status": true,
-      "registro": "7 de mayo de 2023, 22:08:58 UTC-3",
+      "name": "andres",
+      "lastname": "perez",
+      "registro": "2023-06-05T02:50:53.784Z",
       "courses_fk": [
-        1,
         2
-      ]
+      ],
+      "id": 1
     },
     {
       "id": 2,
-      "name": "cacaroto",
-      "lastname": "son",
+      "name": "Franco",
+      "lastname": "Salvati",
       "status": false,
       "registro": "7 de mayo de 2023, 22:08:58 UTC-3",
       "courses_fk": [
-        2
+        3
       ]
     },
     {
@@ -61,14 +60,14 @@
       ]
     },
     {
-      "id": 4,
+      "status": true,
       "name": "pedro",
       "lastname": "luro",
-      "status": false,
-      "registro": "7 de mayo de 2023, 22:08:58 UTC-3",
+      "registro": "2023-06-05T02:50:57.071Z",
       "courses_fk": [
         3
-      ]
+      ],
+      "id": 4
     },
     {
       "id": 5,
@@ -110,11 +109,6 @@
     },
     {
       "id": 4,
-      "name": "UX - UI",
-      "schedules": "10:30 - 12:30"
-    },
-    {
-      "id": 5,
       "name": "UX - UI",
       "schedules": "10:30 - 12:30"
     }

@@ -22,7 +22,7 @@ export class CourseService {
     return this.http.get<Course>(`${this.apiURL}/courses/${id}`)
   }
 
-  addCourse( data: CreateCourseData ) {
+  addCourse( data: CreateCourseData ): Observable<Course> {
     return this.http.post<Course>(`${this.apiURL}/courses`, data).pipe(
       concatMap((createResponse) => this.getCourse(createResponse.id))
     )

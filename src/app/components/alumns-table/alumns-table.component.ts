@@ -63,10 +63,6 @@ export class AlumnsTableComponent implements OnInit {
     const dialogRef = this.dialogService.open(EditDialogoComponent, {
       data: user
     })
-
-    dialogRef.afterClosed().subscribe(valor => {
-      this.alumnosService.editAlumnos(user.id, valor.value)
-    })
   }
 
   navigateToDetails(row: Alumns) {

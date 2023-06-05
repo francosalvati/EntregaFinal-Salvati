@@ -1,15 +1,5 @@
-<form class="flex flex-column align-items-center mt-5" [formGroup]="editForm" (ngSubmit)="onSubmit()">
-  <h2 mat-dialog-title class="text-end"> Editar estatus de {{data.name}} </h2>
-    <mat-slide-toggle [(ngModel)]="data.status" [ngModelOptions]="{standalone: true}" >estado del alumno: {{data.status}} </mat-slide-toggle>
-    <mat-form-field appearance="fill" class="mt-4">
-      <mat-label>Choose a date</mat-label>
-      <input matInput [matDatepicker]="picker" type="text" formControlName="registro" readonly>
-      <mat-hint>MM/DD/YYYY</mat-hint>
-      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-      <mat-error *ngIf="dateControl.hasError('required')" class="">
-        Este campo es obligatorio
-      </mat-error>
-    </mat-form-field>
-    <button mat-flat-button >enviar</button>
+<form class="flex flex-column align-items-center mt-5" (ngSubmit)="onSubmit()">
+  <h2 mat-dialog-title class="text-end"> Editar estatus de {{newAlumn.name}} </h2>
+    <mat-slide-toggle [(ngModel)]="status" [ngModelOptions]="{standalone: true}" >estado del alumno: {{status}} </mat-slide-toggle>
+    <button mat-flat-button class="m-4">enviar</button>
 </form>

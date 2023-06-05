@@ -1,7 +1,9 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Alumns } from 'src/app/models';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { AlumnsActions } from 'src/app/pages/alumns/store/alumns.actions';
 
 
 
@@ -13,24 +15,24 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 })
 export class EditDialogoComponent {
 
-  editForm: FormGroup;
-
-  dateControl: FormControl = new FormControl ('',[
-    Validators.required
-  ])
+  newAlumn: Alumns;
+  status: boolean;
   constructor(
     private matDialog: MatDialogRef<EditDialogoComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Alumns,
-    private formGroup: FormBuilder
+    private store: Store
   ) {
-    this.editForm = formGroup.group({
-      registro: this.dateControl
-    })
+    this.newAlumn = this.data
+    this.status = this.newAlumn.status
   }
 
-  onSubmit(){
-    this.editForm.valid?
-    this.matDialog.close(this.editForm):
-    alert('se debe llenar correctamente el formulario')
+  onSubmit() {
+    console.log(this.newAlumn)
+    this.newAlumn = {
+      ...this.newAlumn,
+      status: this.status
+    }
+    this.store.dispatch(AlumnsActions.updateAlumn({ data: this.newAlumn }))
+    this.matDialog.close()
   }
 }

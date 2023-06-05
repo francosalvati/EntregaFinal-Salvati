@@ -22,36 +22,33 @@ export class AlumnsEffects {
 
   CreateAlumns$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType(AlumnsActions.loadAlumns),
-      concatMap(() =>
-        /** An EMPTY observable only emits completion. Replace with your own observable API request */
-        EMPTY.pipe(
-          map(data => AlumnsActions.loadAlumnsSuccess({ data })),
-          catchError(error => of(AlumnsActions.loadAlumnsFailure({ error }))))
+      ofType(AlumnsActions.createAlumn),
+      concatMap((action) =>
+        this.alumnsService.addAlumnos(action.data).pipe(
+          map((res) => AlumnsActions.createAlumnSuccess({ data: res })),
+          catchError(error => of(AlumnsActions.createAlumnFailure({ error }))))
       )
     );
   });
 
   DeleteAlumns$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType(AlumnsActions.loadAlumns),
-      concatMap(() =>
-        /** An EMPTY observable only emits completion. Replace with your own observable API request */
-        EMPTY.pipe(
-          map(data => AlumnsActions.loadAlumnsSuccess({ data })),
-          catchError(error => of(AlumnsActions.loadAlumnsFailure({ error }))))
+      ofType(AlumnsActions.deleteAlumn),
+      concatMap((action) =>
+        this.alumnsService.deleteAlumn(action.id).pipe(
+          map(() => AlumnsActions.deleteAlumnSuccess({ data: action.id })),
+          catchError(error => of(AlumnsActions.deleteAlumnFailure({ error }))))
       )
     );
   });
 
   UpdateAlumns$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType(AlumnsActions.loadAlumns),
-      concatMap(() =>
-        /** An EMPTY observable only emits completion. Replace with your own observable API request */
-        EMPTY.pipe(
-          map(data => AlumnsActions.loadAlumnsSuccess({ data })),
-          catchError(error => of(AlumnsActions.loadAlumnsFailure({ error }))))
+      ofType(AlumnsActions.updateAlumn),
+      concatMap((action) =>
+          this.alumnsService.editAlumnos(action.data).pipe(
+          map((res) => AlumnsActions.updateAlumnSuccess({ data: res })),
+          catchError(error => of(AlumnsActions.updateAlumnFailure({ error }))))
       )
     );
   });

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Alumns, PayloadAlumns } from '../../models';
+import { Alumns, EditAlumnData, PayloadAlumns } from '../../models';
 import { BehaviorSubject, Observable, Subject, concatMap, filter, retry, take } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
@@ -22,8 +22,16 @@ export class AlumnosService {
     return this.alumns$.asObservable()
   }
 
-  addAlumnos(payload: PayloadAlumns): Observable<Alumns[]> {
-    return this.http.post<Alumns[]>(`${this.apiURL}/alumns`, payload)
+  getAlumn(id: number): Observable<Alumns> {
+    return this.http.get<Alumns>(`${this.apiURL}/alumns/${id}`)
+  }
+
+  addAlumnos(payload: PayloadAlumns): Observable<Alumns> {
+    return this.http.post<Alumns>(`${this.apiURL}/alumns`, payload).pipe(
+      concatMap((createResponse) => {
+        return this.getAlumn(createResponse.id)
+      })
+    )
   }
 
 
@@ -32,34 +40,24 @@ export class AlumnosService {
   }
 
 
-  editAlumnos(id: number, actualizacion: Date): Observable<Alumns[]> {
-
-    this.alumns$.pipe(
-      take(1)
-    )
-      .subscribe({
-        next: (alumn => {
-          const alumnosA = alumn.map((alumn) => {
-            if (alumn.id === id) {
-              return {
-                ...alumn,
-                ...actualizacion
-              }
-            } else {
-              return alumn
-            }
-          })
-
-          this.alumns$.next(alumnosA);
-        }),
-        complete: () => { },
-        error: () => { }
+  editAlumnos(payload: Alumns): Observable<Alumns> {
+    return this.http.put<Alumns>(`${this.apiURL}/alumns/${payload.id}`, {
+      status: payload.status,
+      name: payload.name,
+      lastname: payload.lastname,
+      registro: new Date(),
+      courses_fk: payload.courses_fk
+    }).pipe(
+      concatMap((createResponse) => {
+        return this.getAlumn(createResponse.id)
       })
-
-    return this.alumns$.asObservable()
+    )
   }
 
-  deleteAlumnos(id: number): Observable<Alumns[]> {
-    return this.alumns$.asObservable()
+
+  deleteAlumn(id: number): Observable<unknown> {
+    return this.http.delete(
+      `${this.apiURL}/alumns/${id}`
+    )
   }
 }

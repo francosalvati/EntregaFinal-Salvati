@@ -1,5 +1,5 @@
 export interface Alumns {
-  id:number;
+  id: number;
   name: string;
   lastname: string;
   status: boolean;
@@ -7,35 +7,42 @@ export interface Alumns {
   courses_fk?: number[];
 }
 
-export interface CreateAlumnsData{
+export interface EditAlumnData {
+  id: number;
+  registro: Date;
+  status: boolean;
+}
+
+export interface CreateAlumnsData {
   name: string;
   lastname: string;
   status: boolean;
   registro: Date;
+  courses_fk: number[];
 }
 
-export interface PayloadAlumns{
+export interface PayloadAlumns {
   name: string;
   lastname: string;
   registro: Date;
 }
-export interface PayloadCourse{
+export interface PayloadCourse {
   name: string;
   schedules: string;
 }
 
-export interface Course{
+export interface Course {
   id: number;
   name: string;
   schedules: string;
 }
 
-export interface CreateCourseData{
+export interface CreateCourseData {
   name: string;
   schedules: string;
 }
 
-export interface User{
+export interface User {
   id: number,
   name: string,
   lastname: string,
@@ -45,7 +52,7 @@ export interface User{
   role: string
 }
 
-export interface LoginFormValue{
+export interface LoginFormValue {
   email: string;
   password: string;
 }
